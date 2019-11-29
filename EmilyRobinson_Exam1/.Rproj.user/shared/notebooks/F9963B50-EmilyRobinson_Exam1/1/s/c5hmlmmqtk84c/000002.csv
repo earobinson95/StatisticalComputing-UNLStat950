@@ -1,0 +1,3 @@
+"0","results_data = data.frame(cum_step = seq(1,results$it,1), negAIC = -results$objectiveValues)"
+"0","plot(results_data$cum_step, results_data$negAIC, type = ""l"", "
+"0","     xlab = ""Cumulative Steps"", ylab = ""Negative AIC"", ylim = c(360, 420))"

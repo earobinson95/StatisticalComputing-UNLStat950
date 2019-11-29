@@ -1,0 +1,8 @@
+"0","leukemia <- read.csv(""leukemia.dat"", sep="""")"
+"0","kable(head(leukemia))"
+"2","Registered S3 methods overwritten by 'htmltools':
+  method               from         
+  print.html           tools:rstudio
+  print.shiny.tag      tools:rstudio
+  print.shiny.tag.list tools:rstudio
+"

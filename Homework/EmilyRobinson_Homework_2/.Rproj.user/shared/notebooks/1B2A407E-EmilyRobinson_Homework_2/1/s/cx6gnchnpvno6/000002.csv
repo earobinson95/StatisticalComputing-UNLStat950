@@ -1,0 +1,6 @@
+"0","ans = newtonR(logLikeSurvival, c(0.5,0.25,5), X = model.matrix(~leukemia$group), y = leukemia$remissiontime, w = as.numeric(!leukemia$censored), relConvCrit = 1.e-14)"
+"0","results <- cbind(ans$x, ans$se)"
+"0","greeks = c(alpha='\u03b1', beta0='\u03b2\u2080', beta1 = '\u03b2\u2081')"
+"0","colnames(results) = c(""Estimate"", ""StdErr"")"
+"0","rownames(results) = c(greeks['alpha'], greeks['beta0'], greeks['beta1'])"
+"0","kable(round(results,3))"

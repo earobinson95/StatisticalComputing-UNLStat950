@@ -1,0 +1,2 @@
+"0","leukemia <- read.csv(""leukemia.dat"", sep="""")"
+"0","kable(head(leukemia))"
