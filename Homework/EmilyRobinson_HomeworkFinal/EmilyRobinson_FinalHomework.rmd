@@ -1,0 +1,98 @@
+---
+title: "Final Homework"
+author: "Emily Robinson"
+date: "December 18, 2019"
+output:
+  pdf_document: default
+  html_document: default
+subtitle: STAT 950
+theme: cerulean
+fontsize: 12pt
+header-includes:
+- \usepackage{amsmath}
+- \usepackage{amssymb}
+- \usepackage{amsthm}
+---
+
+<style type="text/css">
+
+h1.title {
+  font-size: 18px;
+  color: Black;
+  text-align: center;
+}
+h3.subtitle{
+  font-size: 12px;
+  color: Black;
+  text-align: center;
+}
+h4.author { /* Header 4 - and the author and data headers use this too  */
+  font-size: 12px;
+  font-family: "Times New Roman", Times, serif;
+  color: Black;
+  text-align: center;
+}
+h4.date { /* Header 4 - and the author and data headers use this too  */
+  font-size: 12px;
+  font-family: "Times New Roman", Times, serif;
+  color: Black;
+  text-align: center;
+}
+</style>
+
+```{r setup, include=FALSE}
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.width=5, fig.height=4, fig.align = "center")
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=50),tidy=TRUE)
+```
+
+
+### Problem 1
+
+Modify the ESS function to also estimate a 95% HPD interval. Include your function in the printed version of the homework.
+
+### Problem 2
+
+Consider the following model: 
+\begin{align*}
+y_i|\kappa & \overset{\text{ind}}\sim\text{exponential}(\kappa_i)\\
+\kappa_i & = \prod_j \theta_j^{x_{ij}}\\
+\theta_j & \overset{\text{ind}}\sim\text{gamma}(\alpha_j,\lambda_j)
+\end{align*}
+
+where $x_{ij}$ are known covariates, and $\alpha_j$ and $\lambda_j$ are known hyperparameters. In some cases the $y_i$ are censored at time $t_i$ so the data are the pairs $(t_i, w_i)$ where $w_i = 1$ if $t_i$ is an uncensored time and $w_i=0$ if $t_i$ is an uncensored time yielding
+$$f_{\boldsymbol t,\boldsymbol w|\boldsymbol\kappa}(\boldsymbol t,\boldsymbol w|\boldsymbol\kappa)=\prod_i \kappa_i^{w_i}e^{-t_ik_i}.$$
+
+$\textbf{Note:}$ Consistent with the book we are using the parameterization where $\kappa_i$ and $\lambda_j$ are rate parameters as opposed to scale parameters.
+
+(a) Derive the score function and Hessian matrix necessary to compute the MLE estimates of $\boldsymbol \theta$ using the Newton-Raphson algorithm. Note: This will not involve the prior distribution, gamma($\alpha_j, \lambda_j)$.
+
+(b) Write a function to compute MLE estimates of $\boldsymbol \theta$ along with their approximate standard errors given $\boldsymbol t, \boldsymbol w,$ and $\boldsymbol x.$ Include your function in the printed version of the homework.
+
+(c) Derive the conditional distributions necessary to implement the Gibbs sampler for $\boldsymbol \theta.$
+
+(d) Write a function that to implement your Gibbs sampler given $\boldsymbol t, \boldsymbol w, \boldsymbol x, \boldsymbol \alpha,$ and $\boldsymbol \lambda.$ Include your function in the printed version of the homework.
+
+(e) Using the data and model described in problem 7.4.
+    
+    i. Run your MLE function to obtain maximum likelihood estimates and approximate standard errors of $\boldsymbol \theta.$
+    
+    ii. Run and evaluate the performance of your Gibbs sampler using a single chain.
+    
+    iii. Using the `doParallel` and `foreach` packages run multiple chains of your Gibbs sampler and evaluate the performance of your Gibbs sampler.
+    
+    iv. Compute summary statistics of the estimated joint posterior distribution of the $\boldsymbol \theta$ along with the mean remission times for control and treated patients, including marginal means, standard deviations, and 95% probability intervals.
+
+### Problem 3
+
+Using the data and change point model for problem 7.6. For the prior assume $\lambda_i\sim \text{Gamma}(\gamma_1,\alpha)$ for $i=1,2$ and $\alpha\sim\text{Gamma}(\gamma_2,\gamma_3)$ where $\gamma_1,\gamma_2,\gamma_3$ are known hyperparameters.
+
+(a) Derive the conditional distributions necessary to implement a change point model Gibbs sampler.
+
+(b) Write a function that to implement a change point model Gibbs sampler given $\boldsymbol X$ and the three gamma distribution hyperparameters. Include your function in the printed version of the homework.
+
+(c) Run your Gibbs sample using the coal mine data and compute summary statistics of the estimated joint posterior distribution of the $\theta, \lambda_1,$ and $\lambda_2$, including marginal means, standard deviations, and 95% probability intervals.
+
+
+
