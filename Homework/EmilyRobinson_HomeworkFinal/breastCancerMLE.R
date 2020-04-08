@@ -38,8 +38,7 @@ logLikeCancer <- function(theta, der = 0, X, t, w){
   return(list(value = value, der1 = der1, der2 = der2))
   
 }
-logLikeCancer(theta = results[,1], der = 2, X = model.matrix(~breastCancer$treatment), t = breastCancer$recurtime, w = !breastCancer$censored)
-logLikeCancer(theta = c(0.008,1.2), der = 2, X = model.matrix(~breastCancer$treatment), t = breastCancer$recurtime, w = !breastCancer$censored)
+logLikeCancer(theta = c(0.2,1.1), der = 2, X = model.matrix(~breastCancer$treatment), t = breastCancer$recurtime, w = !breastCancer$censored)
 
 # Check Objective Function
 theta1 = 1
